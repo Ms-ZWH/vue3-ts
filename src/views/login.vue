@@ -23,8 +23,10 @@
 <script lang="ts">
 import { defineComponent, reactive, toRefs, ref } from 'vue'
 import { loginData } from '@/type/login'
-import type { FormInstance, FormRules } from 'element-plus'
+import type { FormInstance } from 'element-plus'
 import { login } from '@/request/api'
+// 路由
+import { useRouter } from 'vue-router'
 const validatePass = (rule: any, value: any, callback: any) => {
     if (value === '') {
         callback(new Error('Please input the password'))
@@ -46,12 +48,17 @@ export default defineComponent({
         })
         // 登录
         const ruleFormRef = ref<FormInstance>()
+        const router = useRouter() //useRoute()相当于$route
         const submitForm = (formEl: FormInstance | undefined) => {
             if (!formEl) return
             formEl.validate((valid) => {
                 if (valid) {
                     login(data.ruleForm).then((res) => {
                         console.log(res)
+                        // 保存token
+                        localStorage.setItem('token',res.data.token)
+                        // 跳转页面
+                        router.push('/home')
                     })
                     .catch((err: any) => {
                         console.log(err);

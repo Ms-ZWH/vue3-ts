@@ -1,6 +1,24 @@
+@import "@/assets/styles/global.scss";
+@import "@/assets/styles/mixin.scss";
 .primary_but{
     background: $color-confirm-button;
 }
 .cancel_but{
     background: $color-cancel-button;
+}
+.el-row {
+    height:100%;
+    .el-col {
+        height:100%;
+        .grid-content,.ep-bg-purple{
+            
+        height:100%;
+        }
+    }
+}
+.el-header{
+    @include get-backColor('background-theme');
+}
+.text_color{
+    @include get-textColor('color-text');
 }

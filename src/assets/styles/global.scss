@@ -1,3 +1,19 @@
 $color-border: #1A85C2;
-$color-confirm-button:#1A85C2;
-$color-cancel-button:#d9e0e4;
+$color-confirm-button: #1A85C2;
+$color-cancel-button: #d9e0e4;
+$font-header-title: 32px;
+$font-header-right: 16px;
+$themes: (
+    skin1:(
+        background-theme: #024685,
+        color-text: #fff,
+    ),
+    skin2:(
+        background-theme: #FE4C6C,
+        color-text: #fff,
+    ),
+    skin3:(
+        background-theme: #4EDB96,
+        color-text: #fff,
+    )
+)
