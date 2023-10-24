@@ -1,3 +1,4 @@
+// 主题背景色
 @mixin get-backColor($color){
     @each $themeName,$theme in $themes{
         // 循环global.scss文件中的 $themes
@@ -9,10 +10,19 @@
         }
     }
 }
+// 主题字体色
 @mixin get-textColor($color){
     @each $themeName,$theme in $themes{
         [dataskin = '#{$themeName}'] & {
             color: map-get($theme, $color );
+        }
+    }
+}
+// 副题背景色
+@mixin get-backColorSubtitle($color){
+    @each $themeName,$theme in $themes{
+        [dataskin = '#{$themeName}'] & {
+            background-color: map-get($theme, $color );
         }
     }
 }
