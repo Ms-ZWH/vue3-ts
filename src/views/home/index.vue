@@ -30,37 +30,7 @@
             </div>
             <el-container>
                 <div class="nav">
-                    <el-menu default-active="2" class="el-menu-vertical-demo" :collapse="!isCollapse" @open="handleOpen"
-                        @close="handleClose">
-                        <el-sub-menu index="1">
-                            <template #title>
-                                <el-icon>
-                                    <location />
-                                </el-icon>
-                                <span>Navigator One</span>
-                            </template>
-                            <el-sub-menu index="1-1">
-                                <template #title><span>item one</span></template>
-                                <el-menu-item index="1-1-1">item one-1</el-menu-item>
-                            </el-sub-menu>
-                        </el-sub-menu>
-                        <el-menu-item index="2">
-                            <el-icon><icon-menu /></el-icon>
-                            <template #title>Navigator Two</template>
-                        </el-menu-item>
-                        <el-menu-item index="3" disabled>
-                            <el-icon>
-                                <document />
-                            </el-icon>
-                            <template #title>Navigator Three</template>
-                        </el-menu-item>
-                        <el-menu-item index="4">
-                            <el-icon>
-                                <setting />
-                            </el-icon>
-                            <template #title>Navigator Four</template>
-                        </el-menu-item>
-                    </el-menu>
+                    <NavigationBar :isCollapse="isCollapse" />
                 </div>
                 <el-container>
                     <el-main>Main</el-main>
@@ -75,20 +45,14 @@
 import { defineComponent, reactive, ref } from 'vue'
 import router from '@/router';
 import {
-    Document,
-    Menu as IconMenu,
-    Location,
-    Setting,
     Operation
 } from '@element-plus/icons-vue';
+import NavigationBar from '@/components/NavigationBar.vue'
 export default defineComponent({
     // 注册组件
     components: {
-        Document,
-        IconMenu,
-        Location,
-        Setting,
-        Operation
+        Operation,
+        NavigationBar
     },
     setup() {
         // 初始化皮肤颜色
@@ -114,20 +78,12 @@ export default defineComponent({
         const openNav = () => {
             isCollapse.value = !isCollapse.value
         }
-        const handleOpen = (key: string, keyPath: string[]) => {
-            console.log(key, keyPath)
-        }
-        const handleClose = (key: string, keyPath: string[]) => {
-            console.log(key, keyPath)
-        }
         return {
             // ...token(isCollapse),
             isCollapse,
             handleChangeColor,
             handleExit,
             themesAttributeArr,
-            handleOpen,
-            handleClose,
             openNav,
 
         }
@@ -193,10 +149,6 @@ export default defineComponent({
     height: 40px;
     display: flex;
     align-items: center;
-}
-
-.el-menu {
-    flex: 1;
 }
 
 .nav_switch {
